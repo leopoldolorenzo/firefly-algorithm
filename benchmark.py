@@ -1,17 +1,17 @@
 import numpy as np
 
 # ========================================================
-# Función Esfera
-# Dimensiones: d, xi = [-5.12, 5.12], para todo i = 1, .., d.
-# Mínimo global 0 en (0, ..., 0)
+# Sphere Function
+# Dimensions: d, xi = [-5.12, 5.12], for all i = 1, .., d.
+# Global minimum 0 at (0, ..., 0)
 # ========================================================
-def esfera(X):
+def sphere(X):
     return sum(x ** 2 for x in X)
 
 # ========================================================
-# Función Bohchevsky
-# Dimensiones: 2, xi = [-100, 100], para todo i = 1, .., d.
-# Mínimo global 0 en (0, ..., 0)
+# Bohchevsky Function
+# Dimensions: 2, xi = [-100, 100], for all i = 1, .., d.
+# Global minimum 0 at (0, ..., 0)
 # ========================================================
 def Bohchevsky(X):
     x1 = X[0]
@@ -20,9 +20,9 @@ def Bohchevsky(X):
     return eq
 
 # ========================================================
-# Función Booth
-# Dimensiones: 2, xi = [-10, 10], para todo i = 1, .., d.
-# Mínimo global 0 en (1, 3)
+# Booth Function
+# Dimensions: 2, xi = [-10, 10], for all i = 1, .., d.
+# Global minimum 0 at (1, 3)
 # ========================================================
 def Booth(X):
     x1 = X[0]
@@ -31,19 +31,20 @@ def Booth(X):
     return eq
 
 # ========================================================
-# Función Drop-Wave
-# Dimensiones: 2, xi = [-5.12, 5.12], para todo i = 1, 2.
-# Mínimo global -1 en (0, 0)
+# Drop-Wave Function
+# Dimensions: 2, xi = [-5.12, 5.12], for all i = 1, 2.
+# Global minimum -1 at (0, 0)
 # ========================================================
-def ola_caida(X):
-    numerador = 1 + np.cos(12 * np.sqrt((X[0] ** 2) + (X[1] ** 2)))
-    denominador = 0.5 * ((X[0] ** 2) + (X[1] ** 2)) + 2
-    return -numerador / denominador
+def drop_wave(X):
+    up = 1 + np.cos(12 * np.sqrt((X[0] ** 2) + (X[1] ** 2)))
+    down = 0.5 * ((X[0] ** 2) + (X[1] ** 2)) + 2
+    return -up / down
+
 
 # ========================================================
-# Función Eggholder
-# Dimensiones: 2, xi = [-512, 512], para todo i = 1, 2.
-# Mínimo global -959.6407 en (512, 404.2319)
+# Eggholder Function
+# Dimensions: 2, xi = [-512, 512], for all i = 1, 2.
+# Global minimum -959.6407 at (512, 404.2319)
 # ========================================================
 def eggholder(X):
     x1 = X[0]
@@ -52,11 +53,11 @@ def eggholder(X):
     eq2 = x1 * np.sin(np.sqrt(abs(x1 - (x2 + 47))))
     return eq1 - eq2
 
-# ========================================================
-# Función desconocida
-# ========================================================
-def desconocida(X):
-    lista_abs = list(map(abs, X))
-    suma_interna = np.sum(lista_abs)
-    prod_interno = np.prod(lista_abs)
-    return suma_interna + prod_interno
+
+
+
+def dont_know(X):
+    abs_list = list(map(abs, X))
+    inner_sum = np.sum(abs_list)
+    inner_prod = np.prod(abs_list)
+    return inner_sum + inner_prod
